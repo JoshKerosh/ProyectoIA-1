@@ -69,10 +69,26 @@ col1.subheader('Grafico')
 #mostrar el grafico
 loc_plot = col1.empty()
 
+#el dataframe ....
+chart_data = pd.DataFrame(
+   {
+       "col1": np.random.randn(20),
+       "col2": np.random.randn(20),
+       "col3": np.random.choice(["A", "B", "C"], 20),
+   }
+)
+
+#mostrar el grafico
+loc_plot.line_chart(chart_data, x="col1", y="col2", color="col3")
+
 ###########
 ## Funcs ##
 
 #para cambiar la imagen en reproduccion
-def camImgReprod(nuevaImagen):
+def nuevaImgReprod(nuevaImagen):
     imgGenActual = nuevaImagen;
+
+#para poner el grafico
+def nuevoGrafico(tablaDatos):
+    loc_plot.line_chart(tablaDatos, x="col1", y="col2", color="col3")
 
