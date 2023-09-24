@@ -14,23 +14,23 @@ imgPrueba = Image.open('test.jpeg')
 imgInicial = Image.open('black.jpg')
 
 ## Body ##
-st.title('Proyecto1')
+st.title('Proyecto1: Del Píxel al Pincel')
 col1, col2 = st.columns([1,1.5])
 
 ####
 # Variables #
 col1.subheader('Variables')
 #genrerations
-cantGeneraciones = col1.number_input('la cantidad de generaciones',value=cantGeneraciones)
+cantGeneraciones = col1.number_input('Cantidad de generaciones',value=cantGeneraciones)
 #poblation
-tamPoblacion = col1.number_input('el tamaño de la población',value=tamPoblacion)
+tamPoblacion = col1.number_input('Tamaño de la población',value=tamPoblacion)
 
 ####
 # Image Uploader #
 def uploader_callback(): 
-    print('Uploaded file')
+    print('Imagen subida')
 
-imgObjetivo = col1.file_uploader("cargar la imagen", 
+imgObjetivo = col1.file_uploader("Cargar la imagen", 
                                  type=("png", "jpg","jpeg"),
                                  on_change=uploader_callback,
 )
@@ -44,19 +44,27 @@ if imgObjetivo == None :
     imgObjetivo = imgPrueba
 loc_imgObjetivo.image(imgObjetivo)
 
+
+## abajo
+
+
 ####
 # Boton iniciar #
 def button_callback():
     print('iniciar')
     st.session_state.disabled = True
 
-btnIniciar = col1.button('Iniciar', 
-                         on_click=button_callback)
+btnIniciar = st.button('Iniciar', 
+                         on_click=button_callback, 
+                         use_container_width=True)
 
 ####
+
+pan1, pan2 = st.columns([1,1.5])
+
 # Reproduccion de Imagenes #
-col2.subheader('Reproduccion')
-loc_imgGenActual = col2.empty()
+pan2.subheader('Reproduccion')
+loc_imgGenActual = pan2.empty()
 
 if imgGenActual == None :
     imgGenActual = imgInicial
@@ -64,10 +72,8 @@ loc_imgGenActual.image(imgGenActual)
 
 ####
 #Grafico de fitness
-col1.subheader('Grafico')
-
-#mostrar el grafico
-loc_plot = col1.empty()
+pan1.subheader('Grafico')
+loc_plot = pan1.empty()
 
 #el dataframe ....
 chart_data = pd.DataFrame(
