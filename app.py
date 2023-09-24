@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 
 #variables
-cantGeneraciones = 0
-tamPoblacion = 0
+cantGeneraciones = 200
+tamPoblacion = 10
 imgGenActual = None
 
 #imgenes iniciales
@@ -21,9 +21,9 @@ col1, col2 = st.columns([1,1.5])
 # Variables #
 col1.subheader('Variables')
 #genrerations
-cantGeneraciones = col1.number_input('la cantidad de generaciones')
+cantGeneraciones = col1.number_input('la cantidad de generaciones',value=cantGeneraciones)
 #poblation
-tamPoblacion = col1.number_input('el tamaño de la población')
+tamPoblacion = col1.number_input('el tamaño de la población',value=tamPoblacion)
 
 ####
 # Image Uploader #
